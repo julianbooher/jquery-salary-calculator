@@ -1,10 +1,10 @@
 (View Raw will give you the markdown that you can copy to your repos!)
 
 
-![MIT LICENSE](https://img.shields.io/github/license/julianbooher/the_marketplace.svg?style=flat-square)
-![REPO SIZE](https://img.shields.io/github/repo-size/julianbooher/the_marketplace.svg?style=flat-square)
-![TOP_LANGUAGE](https://img.shields.io/github/languages/top/julianbooher/the_marketplace.svg?style=flat-square)
-![FORKS](https://img.shields.io/github/forks/julianbooher/the_marketplace.svg?style=social)
+![MIT LICENSE](https://img.shields.io/github/license/julianbooher/jquery-salary-calculator.svg?style=flat-square)
+![REPO SIZE](https://img.shields.io/github/repo-size/julianbooher/jquery-salary-calculator.svg?style=flat-square)
+![TOP_LANGUAGE](https://img.shields.io/github/languages/top/julianbooher/jquery-salary-calculator.svg?style=flat-square)
+![FORKS](https://img.shields.io/github/forks/julianbooher/jquery-salary-calculator.svg?style=social)
 
 # jQuery Monthly Salary Cost
 
