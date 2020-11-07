@@ -1,6 +1,7 @@
 console.log('in client.js');
 $(document).ready(onReady);
 let tableRowCounter = 0;
+let totalMonthlySalary = 0;
 
 // way to format an integer to USD, from stackoverflow and MDN: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
 let formatter = new Intl.NumberFormat('en-US', {
@@ -29,11 +30,12 @@ function addEmployee(){
         title: $('#in-title').val(),
         salary: $('#in-salary').val()
     };
+    console.log(employee.title)
     appendTable(employee);
+    appendMonthlySalary(employee.salary);
     emptyValues();
     // This is used for an id field in the table row for addition and deletion later.
     tableRowCounter ++;
-    console.log(formatter.format(employee.salary));
 }
 
 function appendTable(employee){
@@ -48,9 +50,14 @@ function appendTable(employee){
     $(`#row-${tableRowCounter}`).append(`<td class="table-button"><button class="delete-button" id="${tableRowCounter}">Delete TODO</button></td>`);
 }
 
+// Adjusts the total monthly 
+function appendMonthlySalary(salary){
+    console.log(salary);
+}
+
 // Deletes a row from the table when you press the delete button.
 function deleteEmployee(){
-    console.log(this.id);
+    // Table row that I want to delete.
     let rowId = this.id;
     $(`#row-${rowId}`).remove();
 }
