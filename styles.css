@@ -7,10 +7,17 @@ header{
     text-align: center;
     background-color: pink;
     padding: 1em;
+    color: rgb(175, 128, 41);
 }
 
 .submission-fields{
     margin-top: 2em;
+    display: inline-block;
+}
+
+#add-employee{
+    margin-top: 1em;
+    float: right;
 }
 
 table {
@@ -22,7 +29,11 @@ th, td{
     border: 1px solid black;
     margin: 0;
     padding: 5px;
-    min-width: 50px;
+    min-width: 100px;
+}
+
+tr:nth-child(even){
+    background-color: pink;
 }
 
 .table-button{
