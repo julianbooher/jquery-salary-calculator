@@ -15,6 +15,7 @@ let formatter = new Intl.NumberFormat('en-US', {
 function onReady(){
     console.log('in jQuery');
     $('#add-employee').on('click', addEmployee);
+    $('#employee-table').on('click', '.delete-button', deleteEmployee);
 }
 
 function addEmployee(){
@@ -44,9 +45,17 @@ function appendTable(employee){
     $(`#row-${tableRowCounter}`).append(`<td>${employee.idNumber}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${employee.title}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${formatter.format(employee.salary)}</td>`);
-    $(`#row-${tableRowCounter}`).append(`<td class="table-button"><button>Delete TODO</button></td>`);
+    $(`#row-${tableRowCounter}`).append(`<td class="table-button"><button class="delete-button" id="${tableRowCounter}">Delete TODO</button></td>`);
 }
 
+// Deletes a row from the table when you press the delete button.
+function deleteEmployee(){
+    console.log(this.id);
+    let rowId = this.id;
+    $(`#row-${rowId}`).remove();
+}
+
+// Empties the input fields.
 function emptyValues(){
     $('#in-first-name').val('');
     $('#in-last-name').val('');
