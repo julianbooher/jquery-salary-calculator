@@ -22,8 +22,17 @@ th, td{
     border: 1px solid black;
     margin: 0;
     padding: 5px;
+    min-width: 50px;
 }
 
 .table-button{
     text-align: center
+}
+.red{
+    background-color: red;
+}
+#salary-count{
+    margin-top: 6em;
+    padding-right: 0;
+    display: inline;
 }

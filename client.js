@@ -8,7 +8,8 @@ let totalMonthlySalary = 0;
 // Array of objects that keeps track of individual salaries.
 let salaries = [];
 
-// way to format an integer to USD, from stackoverflow and MDN: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+// cool way to format an integer to USD, from stackoverflow and MDN: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
 let formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -60,19 +61,34 @@ function appendTable(employee){
     $(`#row-${tableRowCounter}`).append(`<td>${employee.idNumber}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${employee.title}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${formatter.format(employee.salary)}</td>`);
-    $(`#row-${tableRowCounter}`).append(`<td class="table-button"><button class="delete-button" id="${tableRowCounter}" value="${employee.salary}">Delete TODO</button></td>`);
+    $(`#row-${tableRowCounter}`).append(`<td class="table-button"><button class="delete-button" id="${tableRowCounter}" value="${employee.salary}">Delete</button></td>`);
 }
 
 // Adjusts the total monthly 
 function appendMonthlySalary(){
     let totalSalaries = 0
+    // Loop to add up all of the salaries.
     for (let x of salaries){
         totalSalaries += x.salary;
     }
-    totalSalaries = formatter.format(Math.round(totalSalaries / 12));
+    // Divide by 12, since this is gonna be monthly payroll, and round it.
+    totalSalaries = Math.round(totalSalaries / 12);
     console.log(totalSalaries);
-    $('#salaryCount').empty();
-    $('#salaryCount').append(`Total Monthly Salary: ${totalSalaries}`);
+    // If the total monthly payroll is 20k or more, make it red
+    // Wanted to use toggle, but I'm not sure how to make that work with how I have this set up.
+    if (totalSalaries > 19999){
+        // Format the payroll to USD.
+        totalSalaries = formatter.format(totalSalaries);
+        $('.payroll').empty();
+        $('.payroll').append(`<span class ="red" id="salary-count">Total Monthly Payroll: ${totalSalaries}</span>`);
+    } 
+    // Else it's less than 20k, don't make it red.
+    else{
+        // Format the payroll to USD.
+        totalSalaries = formatter.format(totalSalaries);
+        $('.payroll').empty();
+        $('.payroll').append(`<span id="salary-count">Total Monthly Payroll: ${totalSalaries}</span>`);
+    }
 }
 
 // Deletes a row from the table when you press the delete button.
