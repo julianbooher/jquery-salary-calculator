@@ -1,7 +1,12 @@
 console.log('in client.js');
 $(document).ready(onReady);
+// -- Global variables --
+// Keeps track of table rows so that each one can have a unique id.
 let tableRowCounter = 0;
+// Keeps track of the cumulative monthly salary.
 let totalMonthlySalary = 0;
+// Array of objects that keeps track of individual salaries.
+let salaries = [];
 
 // way to format an integer to USD, from stackoverflow and MDN: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
 let formatter = new Intl.NumberFormat('en-US', {
@@ -30,12 +35,20 @@ function addEmployee(){
         title: $('#in-title').val(),
         salary: $('#in-salary').val()
     };
-    console.log(employee.title)
-    appendTable(employee);
-    appendMonthlySalary(employee.salary);
-    emptyValues();
-    // This is used for an id field in the table row for addition and deletion later.
-    tableRowCounter ++;
+    // Error checking to ensure all fields have a value.
+    if (employee.firstName && employee.lastName && employee.idNumber && employee.title && employee.salary){
+        // Add new employee to the salaries array.
+        salaries.push({row: tableRowCounter, salary: Number(employee.salary)});
+        console.log(salaries);
+        appendTable(employee);
+        appendMonthlySalary();
+        emptyValues();
+        // This is used for an id field in the table row for addition and deletion later.
+        tableRowCounter ++;
+    } else{
+        // TODO display error message on DOM
+        console.log('nope');
+    }
 }
 
 function appendTable(employee){
@@ -47,20 +60,36 @@ function appendTable(employee){
     $(`#row-${tableRowCounter}`).append(`<td>${employee.idNumber}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${employee.title}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${formatter.format(employee.salary)}</td>`);
-    $(`#row-${tableRowCounter}`).append(`<td class="table-button"><button class="delete-button" id="${tableRowCounter}">Delete TODO</button></td>`);
+    $(`#row-${tableRowCounter}`).append(`<td class="table-button"><button class="delete-button" id="${tableRowCounter}" value="${employee.salary}">Delete TODO</button></td>`);
 }
 
 // Adjusts the total monthly 
-function appendMonthlySalary(salary){
-    console.log(salary);
+function appendMonthlySalary(){
+    let totalSalaries = 0
+    for (let x of salaries){
+        totalSalaries += x.salary;
+    }
+    totalSalaries = formatter.format(Math.round(totalSalaries / 12));
+    console.log(totalSalaries);
+    $('#salaryCount').empty();
+    $('#salaryCount').append(`Total Monthly Salary: ${totalSalaries}`);
 }
 
 // Deletes a row from the table when you press the delete button.
 function deleteEmployee(){
     // Table row that I want to delete.
-    let rowId = this.id;
+    let rowId = Number(this.id);
+    // Delete that row.
     $(`#row-${rowId}`).remove();
+    // Delete from salaries array.
+    for (let i = 0; i < salaries.length; i++){
+        if (rowId === salaries[i].row){
+            salaries.splice(i, 1);
+        }
+    }
+    appendMonthlySalary();
 }
+
 
 // Empties the input fields.
 function emptyValues(){
