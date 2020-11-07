@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -15,8 +11,30 @@
         <script src="client.js"></script>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <header><h1>jQuery Salary Calculator</h1></header>
+        <main>
+            <section>
+                <form class="submission-fields">
+                    <input id="in-first-name" type="text" placeholder="First Name"/>
+                    <input id="in-last-name" type="text" placeholder="Last Name"/>
+                    <input id="in-id" type="number" placeholder="ID#" min="1"/>
+                    <input id="in-title" type="text" placeholder="Title"/>
+                    <input id="in-salary" type="number" placeholder="Salary (e.g. 40000)"/>
+                    <button id="add-employee">Submit Employee</button>
+                </form>
+            </section>
+            <section>
+                <table id="employee-table">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>ID Number</th>
+                        <th>Title</th>
+                        <th>Salary</th>
+                        <th>DELETE BUTTON TODO</th>
+                    </tr>
+                </table>
+            </section>
+        </main>
     </body>
 </html>

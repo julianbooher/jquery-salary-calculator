@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+    background-color: antiquewhite;
+}
+
+header{
+    text-align: center;
+    background-color: pink;
+    padding: 1em;
+}
+
+.submission-fields{
+    margin-top: 2em;
+}
+
+table {
+    border: 1px solid black;
+    margin-top: 2em;
+}
+th, td{
+    border: 1px solid black;
+    margin: 0;
+    
+}
