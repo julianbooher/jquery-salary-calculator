@@ -30,19 +30,21 @@ function addEmployee(){
     };
     appendTable(employee);
     emptyValues();
+    // This is used for an id field in the table row for addition and deletion later.
+    tableRowCounter ++;
     console.log(formatter.format(employee.salary));
 }
 
 function appendTable(employee){
     $('#employee-table').append(`<tr id="row-${tableRowCounter}"></tr>`);
+    // I wanted to use a for/in loop to append these at first, but it would make it tough to implement the formatting for USD.
+    // I could do that formatting earlier, however then it may make it tricky to do math things with it later.
     $(`#row-${tableRowCounter}`).append(`<td>${employee.firstName}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${employee.lastName}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${employee.idNumber}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${employee.title}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${formatter.format(employee.salary)}</td>`);
-    
-    
-    $(`#row-${tableRowCounter}`).append(`<button>Delete TODO</button>`);
+    $(`#row-${tableRowCounter}`).append(`<td class="table-button"><button>Delete TODO</button></td>`);
 }
 
 function emptyValues(){
