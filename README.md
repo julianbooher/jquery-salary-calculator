@@ -17,7 +17,7 @@ This page calculates the monthly payroll of employees that the user enters. When
 
 ## Installation
 
-Download the repository, then open index.html in your browser.
+Download the repository, then open index.html in your browser to begin usage. 
 
 ## Usage
 
