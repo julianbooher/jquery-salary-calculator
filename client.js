@@ -53,7 +53,7 @@ function addEmployee(){
         $('#in-first-name').focus();
     } else{
         // Display error check message near the input fields.
-        $('.input-response').append('');
+        $('.input-response').empty();
         $('.input-response').append('Please insert a value in each field');
     }
 }
