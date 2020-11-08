@@ -1,4 +1,4 @@
-![MIT LICENSE](https://img.shields.io/github/license/julianbooher/jquery-salary-calculator.svg?style=flat-squar
+![MIT LICENSE](https://img.shields.io/github/license/julianbooher/jquery-salary-calculator.svg?style=flat-square)
 ![REPO SIZE](https://img.shields.io/github/repo-size/julianbooher/jquery-salary-calculator.svg?style=flat-square)
 ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/julianbooher/jquery-salary-calculator.svg?style=flat-square)
 ![FORKS](https://img.shields.io/github/forks/julianbooher/jquery-salary-calculator.svg?style=social)
