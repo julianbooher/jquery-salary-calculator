@@ -2,7 +2,9 @@ body{
     margin: 0;
     background-color: antiquewhite;
 }
-
+main{
+    margin-left: 1em;
+}
 header{
     text-align: center;
     background-color: pink;
@@ -46,4 +48,8 @@ tr:nth-child(even){
     margin-top: 6em;
     padding-right: 0;
     display: inline;
+}
+.input-response{
+    text-align: center;
+    color: red;
 }

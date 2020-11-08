@@ -38,6 +38,8 @@ function addEmployee(){
     };
     // Error checking to ensure all fields have a value.
     if (employee.firstName && employee.lastName && employee.idNumber && employee.title && employee.salary){
+        // empty error message if there is one.
+        $('.input-response').empty();
         // Add new employee to the salaries array.
         salaries.push({row: tableRowCounter, salary: Number(employee.salary)});
         console.log(salaries);
@@ -47,7 +49,8 @@ function addEmployee(){
         // This is used for an id field in the table row for addition and deletion later.
         tableRowCounter ++;
     } else{
-        // TODO display error message on DOM
+        $('.input-response').append('');
+        $('.input-response').append('Please insert a value in each field');
         console.log('nope');
     }
 }
