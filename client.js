@@ -48,26 +48,30 @@ function addEmployee(){
         emptyValues();
         // This is used for an id field in the table row for addition and deletion later.
         tableRowCounter ++;
+        // This moves the cursor back to the First Name input field, that way the user doesn't have to click it after they've submitted an employee.
+        // Allows the user to go right into typing another employee's information.
+        $('#in-first-name').focus();
     } else{
+        // Display error check message near the input fields.
         $('.input-response').append('');
         $('.input-response').append('Please insert a value in each field');
-        console.log('nope');
     }
 }
 
 function appendTable(employee){
+    // Make a new row, to be appended with data.
     $('#employee-table').append(`<tr id="row-${tableRowCounter}"></tr>`);
     // I wanted to use a for/in loop to append these at first, but it would make it tough to implement the formatting for USD.
-    // I could do that formatting earlier, however then it may make it tricky to do math things with it later.
     $(`#row-${tableRowCounter}`).append(`<td>${employee.firstName}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${employee.lastName}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${employee.idNumber}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td>${employee.title}</td>`);
+    // I could do that formatting earlier, however then it may make it tricky to do math things with it later.
     $(`#row-${tableRowCounter}`).append(`<td>${formatter.format(employee.salary)}</td>`);
     $(`#row-${tableRowCounter}`).append(`<td class="table-button"><button class="delete-button" id="${tableRowCounter}" value="${employee.salary}">Delete</button></td>`);
 }
 
-// Adjusts the total monthly 
+// Adjusts the total monthly payroll costs.
 function appendMonthlySalary(){
     let totalSalaries = 0
     // Loop to add up all of the salaries.
@@ -76,10 +80,9 @@ function appendMonthlySalary(){
     }
     // Divide by 12, since this is gonna be monthly payroll, and round it.
     totalSalaries = Math.round(totalSalaries / 12);
-    console.log(totalSalaries);
     // If the total monthly payroll is 20k or more, make it red
     // Wanted to use toggle, but I'm not sure how to make that work with how I have this set up.
-    if (totalSalaries > 19999){
+    if (totalSalaries >= 20000){
         // Format the payroll to USD.
         totalSalaries = formatter.format(totalSalaries);
         $('.payroll').empty();
@@ -89,6 +92,7 @@ function appendMonthlySalary(){
     else{
         // Format the payroll to USD.
         totalSalaries = formatter.format(totalSalaries);
+        // Display the payroll below the table.
         $('.payroll').empty();
         $('.payroll').append(`<span id="salary-count">Total Monthly Payroll: ${totalSalaries}</span>`);
     }
@@ -100,7 +104,7 @@ function deleteEmployee(){
     let rowId = Number(this.id);
     // Delete that row.
     $(`#row-${rowId}`).remove();
-    // Delete from salaries array.
+    // Delete from salaries array using a for loop and checking values.
     for (let i = 0; i < salaries.length; i++){
         if (rowId === salaries[i].row){
             salaries.splice(i, 1);
