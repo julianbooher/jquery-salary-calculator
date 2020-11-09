@@ -1,6 +1,6 @@
 console.log('in client.js');
 $(document).ready(onReady);
-// -- Global variables --
+// ---- Global variables ----
 // Keeps track of table rows so that each one can have a unique id.
 let tableRowCounter = 0;
 // Keeps track of the cumulative monthly salary.
@@ -82,7 +82,7 @@ function appendMonthlySalary(){
     totalSalaries = Math.round(totalSalaries / 12);
     // If the total monthly payroll is 20k or more, make it red
     // Wanted to use toggle, but I'm not sure how to make that work with how I have this set up.
-    if (totalSalaries >= 20000){
+    if (totalSalaries > 20000){
         // Format the payroll to USD.
         totalSalaries = formatter.format(totalSalaries);
         $('.payroll').empty();
